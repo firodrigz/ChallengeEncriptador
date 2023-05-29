@@ -1,7 +1,7 @@
 const ingresoMensaje = document.querySelector(".mensaje-ingreso");
 const muestraResultado = document.querySelector(".muestra-resultado");
 const copiarMensaje = document.querySelector(".copiar");
-//copiar.style.display = "none" //para ocultar el botón enviar*/
+copiar.style.display = "none";
 
 
 /*var ingreso =[];
@@ -91,4 +91,17 @@ function copiar(){
 }
 
 
+function darkMode() {
+    toggle.addEventListener('change',() => {
+        if (toggle.checked) {
+            console.log('activado')
+            document.querySelector('body').classList.add('modoNoche');
+        } else {
+            document.querySelector('body').classList.remove('modoNoche');
+        }
+    })
+}
 
+window.addEventListener("load",() => {
+    darkMode();
+})

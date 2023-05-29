@@ -1,4 +1,19 @@
-@import 'reset.css';
+:root {
+  --dark-blue-300:#0A3871;
+  --dark-blue-letras:#0A3871;
+  --dark-blue-placeHolder:#0A3871;
+  --dark-blue-400:#072B61;
+  --dark-blue-500:#052051;
+  --light-blue-100: #F3F5FC;
+  --light-blue-400: #757FB2;
+  --light-blue500: #AAB2D5;
+  --white: #FFFFFF;
+  --gray-400:#495057;
+  --gray-500:#373c41;
+  --togle-noche: #343A40;
+  --btn-gris:#D8DFE8;
+  --box-shadowBTN:0px 24px 32px -8px #00000014;
+}
 
 html {
     box-sizing: border-box;
@@ -13,7 +28,7 @@ html {
   }
   
   body {
-    background: #f3f5fc;
+    background: var(--light-blue-100);
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     line-height: 150%;
@@ -42,6 +57,55 @@ html {
     height: 12vh;
     margin-top: 2%;
   }
+
+  /*-----Dark mode*/
+.modoNoche {
+  --light-blue-100: #222831;
+  --white: #393E46;
+  --dark-blue-300:#AAB2D5;
+  --gray-400:#c5c5c5e0;
+  --gray-500:#eff1fa;
+  --dark-blue-placeHolder:#C5C5C5;
+}
+/*--------togle------*/
+.wrap-toggle {
+  position: absolute;
+  right: 1rem;
+  top: 20px;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  background-color: var(--light-blue500);
+  border-radius: 30px;
+  cursor: pointer;
+}
+.switch::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: var(--light-blue-100);
+  left: 5px;
+  top: 5px;
+  transition: transform 0.5s, background-color 0.5s;
+}
+
+input[type='checkbox']:checked + .switch::after {
+  transform: translateX(30px);
+  background-color: #868E96;
+}
+
+input[type='checkbox']:checked + .switch {
+  background-color: var(--togle-noche);
+}
+.offscreen {
+  position: absolute;
+  left: -99999px;
+}
   
   /* Contenedor Principal */
   .main-container {
@@ -66,7 +130,7 @@ html {
   .mensaje-ingreso {
     width: 100%;
     height: 70%;
-    background-color: #f3f5fc;
+    background-color: var(--light-blue-100);
     border: none;
     color: #0a3871;
     font-size: 2rem;
@@ -281,3 +345,243 @@ html {
     color: #3498db;
     transition: 200ms;
   }
+
+  @media screen and (min-width: 601px) and (max-width: 1024px) {
+    .container {
+      width: 100vw;
+    }
+  
+    .main-container {
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+  
+    .ingreso {
+      padding: 5%;
+      width: 100%;
+      height: 70%;
+    }
+  
+    .resultado {
+      padding: 5%;
+      width: 100%;
+      height: 30%;
+    }
+  
+    .output-initial {
+      width: 90%;
+    }
+  
+    .muñeco {
+      display: none;
+    }
+  
+    .mensaje-inicial {
+      font-size: 3vw;
+      padding-top: 2rem;
+      padding-bottom: 0.5rem;
+    }
+  
+    .insert-text {
+      height: 10vh;
+      font-size: 2vh;
+      padding-top: 1rem;
+    }
+  
+    .output-result {
+      width: 100%;
+      height: 25vh;
+      padding-bottom: 1rem;
+    }
+  
+    .muestra-resultado{
+      padding-top: 1rem;
+      font-size: 3vw;
+    }
+  
+    .copyright {
+      font-size: 1.5vw;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  @media screen /* and (min-height: 300px) */and (max-height: 640px) {
+    .main-container {
+      flex-direction: row;
+    }
+  
+    .ingreso {
+      width: 60%;
+      height: 80vh;
+      padding-top: 6%;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      padding-bottom: 0.5rem;
+    }
+  
+    ::placeholder {
+      font-size: 1.3rem;
+      padding-left: 0;
+    }
+  
+    .informacion {
+      font-size: 1rem;
+    }
+  
+    .resultado {
+      padding: 3%;
+      padding-top: 0;
+      width: 40%;
+      height: 90vh;
+    }
+  
+    .output-result {
+      width: 100%;
+      height: 80vh;
+      padding-bottom: 1rem;
+    }
+  
+    .muestra-resultado {
+      width: 80%;
+      height: 70%;
+    }
+  
+    .btn-copiar {
+      width: 80%;
+      height: 13vh;
+    }
+  
+    .btn-encriptar {
+      height: 13vh;
+    }
+  
+    .btn-desencriptar {
+      height: 13vh;
+    }
+  
+    .copiar {
+      padding: 0;
+    }
+  }
+
+  
+@media screen and (max-width: 600px) {
+  .container {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .logo {
+    width: 20vw;
+  }
+
+  .main-container {
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .ingreso {
+    width: 100%;
+    height: 70%;
+  }
+
+  .mensaje-ingreso {
+    padding: 0.5vw;
+  }
+
+  ::placeholder {
+    text-align: center;
+    font-size: 5.5vw;
+    padding: 0.5vw;
+  }
+
+  .informacion {
+    padding: 0;
+    width: 100%;
+    height: 3vh;
+    font-size: 4vw;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .botones {
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .btn-encriptar:hover {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+  }
+
+  .btn-desencriptar:hover {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+  }
+
+  .btn-copiar:hover {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+  }
+
+  .resultado {
+    width: 100%;
+    height: 30%;
+  }
+
+  .output-initial {
+    width: 90%;
+    height: 100%;
+  }
+
+  .muñeco {
+    display: none;
+  }
+
+  .mensaje-inicial {
+    font-size: 4vw;
+    padding-top: 3rem;
+  }
+
+  .insert-text {
+    font-size: 2vh;
+    height: 10vh;
+  }
+
+  .output-result {
+    width: 90%;
+    height: 25vh;
+  }
+
+  .muestra-resultado {
+    padding: 0.5rem;
+    font-size: 6vw;
+  }
+
+  .btn-copiar {
+    width: 80%;
+    height: 6vh;
+  }
+
+  .copyright {
+    flex-direction: column;
+    padding-top: 2rem;
+    font-size: 2vw;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .contact {
+    padding-bottom: 1rem;
+  }
+  .icono {
+    font-size: 1.5rem;
+  }
+}
