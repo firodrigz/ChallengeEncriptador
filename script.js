@@ -1,23 +1,5 @@
 const ingresoMensaje = document.querySelector(".mensaje-ingreso");
 const muestraResultado = document.querySelector(".muestra-resultado");
-const copiarMensaje = document.querySelector(".copiar");
-copiar.style.display = "none";
-
-
-/*var ingreso =[];
-
-ingreso.includes(searchElement);  //elemento a buscar, distingue mayúsculas y minúsuclas / devuelve true o false
-*/
-
-
-//Laves de encriptacion
-// `La letra "e" es convertida para "enter"`
-// `La letra "i" es convertida para "imes"`
-// `La letra "a" es convertida para "ai"`
-// `La letra "o" es convertida para "ober"`
-// `La letra "u" es convertida para "ufat"`
-
-
 
 function encriptar(stringEncriptada){
     let matrizCodigo = [["e", "enter"], ["i", "imes"], ["a", "ai"], ["o", "ober"], ["u", "ufat"]];
@@ -48,16 +30,21 @@ function desencriptar(stringDesencriptada){
 }
 
 
-
-function btnEncriptar(){
-    if(!validarTexto()) {
-        const textoEncriptado = encriptar(ingresoMensaje.value);
-        muestraResultado.value = textoEncriptado;  //muestro el mensaje encriptado en el textarea muestra-resultado
-        muestraResultado.style.backgroundImage = "none"; //saco imagen en textarea muestra-resultado
-        ingresoMensaje.value = "";  //limpio el textarea
-        copiarMensaje.style.display = "block";
-    
+function btnEncriptar(){    
+    if (ingresoMensaje.value == ""){
+        alert("Ingrese texto a encriptar");        
     }
+    else{
+        if(!validarTexto()) {
+            const textoEncriptado = encriptar(ingresoMensaje.value);
+            muestraResultado.value = textoEncriptado;  //muestro el mensaje encriptado en el textarea muestra-resultado          
+            ingresoMensaje.value = "";  //limpio el textarea
+            document.getElementById("output-initial").classList.add("disable");//saco imagen en textarea muestra-resultado
+            document.getElementById("output-result").classList.remove("disable"); //muestra mensaje encriptado/desencriptado        
+        }        
+    }
+   
+    
 }
 
 
@@ -73,19 +60,21 @@ function validarTexto(){
 }
 
 
-
 function btnDesencriptar(){
-    const textoEncriptado = desencriptar(ingresoMensaje.value);
-    muestraResultado.value = textoEncriptado;
-    ingresoMensaje.value = "";
-    
+    if (ingresoMensaje.value == ""){
+        alert("Ingrese texto a desencriptar");        
+    }
+    else{
+        const textoEncriptado = desencriptar(ingresoMensaje.value);
+        muestraResultado.value = textoEncriptado;
+        ingresoMensaje.value = "";
+    }    
 }
-
 
 
 function copiar(){
     muestraResultado.select();
-    navigator.clipboard.writeText(mensaje.value);
+    navigator.clipboard.writeText(muestraResultado.value);
     muestraResultado.value = "";
     alert("Texto Copiado");
 }
