@@ -79,7 +79,7 @@ function copiarPortapapeles(){
     muestraResultado.select();
     muestraResultado.setSelectionRange(0,99999);
     document.execCommand('copy');
-    alert("Copiado al portapapeles, utilice crtl+v para desenciptar");
+    alert("Copiado!");
 
     ingresoMensaje.value = muestraResultado.value;
     muestraResultado.value = "";
